@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Margin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#1a1a18;--muted:#6b6b67;--faint:#f2f0eb;--border:#e0ddd6;
+  --accent:#c0392b;--accent-soft:#e08b83;
+  --serif:"Playfair Display",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;
+}
+body{font-family:var(--sans);background:#fff;color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+svg{display:block;max-width:100%}
+
+header{border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);z-index:100}
+.hi{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:74px;gap:1.5rem}
+.logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;letter-spacing:-0.02em}
+.logo span{color:var(--accent)}
+.pill-btn{background:var(--ink);color:#fff;font-size:0.9rem;font-weight:500;padding:0.65rem 1.5rem;border-radius:999px;white-space:nowrap;border:none;cursor:pointer;font-family:var(--sans)}
+.pill-btn:hover{background:var(--accent)}
+
+/* filters */
+.filters-wrap{padding:2.75rem 1.5rem 0}
+.filters{max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;gap:0.6rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.chip{font-family:var(--sans);font-size:0.9rem;font-weight:500;padding:0.6rem 1.25rem;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--ink);cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* cards */
+.cards-wrap{max-width:1060px;margin:0 auto;padding:2.75rem 1.5rem 4rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:2.75rem 2rem}
+.card{display:flex;flex-direction:column}
+.thumb{background:var(--faint);border-radius:4px;aspect-ratio:16/10;position:relative;overflow:hidden;margin-bottom:1.1rem}
+.thumb svg{width:100%;height:100%}
+.thumb .cat{position:absolute;left:1rem;bottom:0.85rem;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+.card h2{font-family:var(--serif);font-size:1.4rem;font-weight:600;line-height:1.28;letter-spacing:-0.015em;margin-bottom:0.75rem}
+.card h2 em{font-style:italic}
+.card a:hover h2{color:var(--accent)}
+.card .stamp{font-size:0.85rem;color:#9a9894;margin-top:auto}
+.empty{grid-column:1/-1;color:var(--muted);font-size:0.95rem;padding:1rem 0}
+
+/* about: your words only */
+.about{background:var(--ink);color:#f2f0eb;padding:5rem 1.5rem}
+.about-inner{max-width:1060px;margin:0 auto}
+.about h2{font-family:var(--serif);font-size:clamp(1.9rem,5vw,2.9rem);line-height:1.16;letter-spacing:-0.02em;max-width:19ch;color:#fff}
+.about h2 em{font-style:italic;color:var(--accent-soft)}
+.about p{margin-top:1.6rem;max-width:56ch;font-size:1.02rem;line-height:1.85;color:#c9c6c0}
+
+/* newsletter */
+.sub-wrap{border-top:1px solid var(--border);padding:4.5rem 1.5rem}
+.sub{max-width:600px;margin:0 auto;text-align:center}
+.eyebrow{font-size:0.78rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.25rem}
+.sub h2{font-family:var(--serif);font-size:clamp(1.8rem,4.5vw,2.5rem);line-height:1.2;letter-spacing:-0.02em;margin-bottom:1rem}
+.sub .fine{color:var(--muted);font-size:0.96rem;margin-bottom:2rem}
+
+footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;font-size:0.85rem;color:var(--muted)}
+.fi{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.fl{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:1.15rem}
+.fli{display:flex;gap:1.75rem}
+.fli a:hover{color:var(--accent)}
+
+@media(max-width:640px){
+  .hi{height:66px}.logo{font-size:1.5rem}
+  .cards{grid-template-columns:1fr;gap:2.5rem}
+  .about{padding:3.5rem 1.5rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hi">
+    <a href="index.html" class="logo">The <span>Margin</span></a>
+    <a href="#newsletter" class="pill-btn">Subscribe</a>
+  </div>
+</header>
+
+<div class="filters-wrap" id="articles">
+  <div class="filters" id="filters" role="group" aria-label="Filter by topic">
+    <button class="chip" data-cat="all" aria-pressed="true">All</button>
+    <button class="chip" data-cat="macro" aria-pressed="false">Macro</button>
+    <button class="chip" data-cat="housing" aria-pressed="false">Housing</button>
+    <button class="chip" data-cat="education" aria-pressed="false">Education</button>
+    <button class="chip" data-cat="inequality" aria-pressed="false">Inequality</button>
+  </div>
+</div>
+
+<div class="cards-wrap">
+  <div class="cards" id="cards">
+
+    <article class="card" data-cat="education">
+      <a href="mcps-capacity.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <rect x="30" y="60" width="46" height="100" fill="#c0392b" opacity="0.85" rx="2"/>
+            <rect x="88" y="95" width="46" height="65" fill="#c0392b" opacity="0.45" rx="2"/>
+            <rect x="146" y="112" width="46" height="48" fill="#c0392b" opacity="0.30" rx="2"/>
+            <rect x="204" y="128" width="46" height="32" fill="#c0392b" opacity="0.20" rx="2"/>
+            <line x1="20" y1="160" x2="300" y2="160" stroke="#c8c5be" stroke-width="1"/>
+          </svg>
+          <span class="cat">Education</span>
+        </div>
+        <h2>MCPS is <em>full and empty at the same time</em></h2>
+      </a>
+      <p class="stamp">July 2026 &middot; 8 min read</p>
+    </article>
+
+    <article class="card" data-cat="education">
+      <a href="mcps-ap-participation.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <rect x="26" y="42" width="34" height="118" fill="#c0392b" opacity="0.85" rx="2"/>
+            <rect x="72" y="66" width="34" height="94" fill="#c0392b" opacity="0.62" rx="2"/>
+            <rect x="118" y="92" width="34" height="68" fill="#c0392b" opacity="0.45" rx="2"/>
+            <rect x="164" y="118" width="34" height="42" fill="#c0392b" opacity="0.32" rx="2"/>
+            <rect x="210" y="132" width="34" height="28" fill="#c0392b" opacity="0.22" rx="2"/>
+            <rect x="256" y="142" width="34" height="18" fill="#c0392b" opacity="0.15" rx="2"/>
+            <line x1="18" y1="160" x2="302" y2="160" stroke="#c8c5be" stroke-width="1"/>
+          </svg>
+          <span class="cat">Education</span>
+        </div>
+        <h2>MCPS offers AP classes almost everywhere. <em>So why does participation range from 20% to 78%?</em></h2>
+      </a>
+      <p class="stamp">July 2026 &middot; 7 min read</p>
+    </article>
+
+    <article class="card" data-cat="housing">
+      <a href="bethesda-housing.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <polyline points="25,145 85,132 145,110 205,78 285,44" fill="none" stroke="#c0392b" stroke-width="3" stroke-linejoin="round"/>
+            <polygon points="25,145 85,132 145,110 205,78 285,44 285,160 25,160" fill="#c0392b" opacity="0.08"/>
+            <polyline points="25,150 85,146 145,142 205,139 285,137" fill="none" stroke="#6b6b67" stroke-width="1.75" stroke-dasharray="5,4" opacity="0.6"/>
+            <line x1="18" y1="160" x2="302" y2="160" stroke="#c8c5be" stroke-width="1"/>
+          </svg>
+          <span class="cat">Housing</span>
+        </div>
+        <h2>Bethesda housing: <em>the market rewards the people who got in earlier</em></h2>
+      </a>
+      <p class="stamp">July 2026 &middot; 8 min read</p>
+    </article>
+
+    <article class="card" data-cat="inequality">
+      <a href="montgomery-county-middle.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <rect x="42" y="96" width="52" height="64" fill="#c0392b" opacity="0.80" rx="2"/>
+            <rect x="102" y="66" width="52" height="94" fill="#6b6b67" opacity="0.45" rx="2"/>
+            <rect x="182" y="72" width="52" height="88" fill="#c0392b" opacity="0.90" rx="2"/>
+            <rect x="242" y="106" width="52" height="54" fill="#6b6b67" opacity="0.45" rx="2"/>
+            <line x1="18" y1="160" x2="302" y2="160" stroke="#c8c5be" stroke-width="1"/>
+            <text x="68" y="182" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#9a9894">2005</text>
+            <text x="238" y="182" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#9a9894">2022</text>
+          </svg>
+          <span class="cat">Inequality</span>
+        </div>
+        <h2>Montgomery County is losing its middle, <em>but the numbers are more complicated than they look</em></h2>
+      </a>
+      <p class="stamp">July 2026 &middot; 8 min read</p>
+    </article>
+
+    <article class="card" data-cat="macro">
+      <a href="june-inflation-report.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <polyline points="25,70 85,62 145,55 205,58 265,96" fill="none" stroke="#c0392b" stroke-width="3" stroke-linejoin="round"/>
+            <line x1="25" y1="120" x2="295" y2="120" stroke="#9a9894" stroke-width="1" stroke-dasharray="4,5"/>
+            <circle cx="265" cy="96" r="5" fill="#c0392b"/>
+            <line x1="18" y1="160" x2="302" y2="160" stroke="#c8c5be" stroke-width="1"/>
+          </svg>
+          <span class="cat">Macro</span>
+        </div>
+        <h2>June: <em>one good inflation report did not erase the rest of the year</em></h2>
+      </a>
+      <p class="stamp">June 2026 &middot; 6 min read</p>
+    </article>
+
+    <article class="card" data-cat="macro">
+      <a href="april-oil-steel.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <polyline points="25,132 75,126 125,118 175,74 225,52 285,58" fill="none" stroke="#c0392b" stroke-width="3" stroke-linejoin="round"/>
+            <polygon points="25,132 75,126 125,118 175,74 225,52 285,58 285,160 25,160" fill="#c0392b" opacity="0.09"/>
+            <line x1="18" y1="160" x2="302" y2="160" stroke="#c8c5be" stroke-width="1"/>
+          </svg>
+          <span class="cat">Macro</span>
+        </div>
+        <h2>April: <em>the Fed cannot produce more oil or steel</em></h2>
+      </a>
+      <p class="stamp">April 2026 &middot; 7 min read</p>
+    </article>
+
+    <article class="card" data-cat="macro">
+      <a href="march-fed-incomplete-picture.html">
+        <div class="thumb">
+          <svg viewBox="0 0 320 200" aria-hidden="true">
+            <polyline points="25,58 95,58 165,58 235,58 295,58" fill="none" stroke="#1a1a18" stroke-width="2.5" stroke-dasharray="7,4" opacity="0.65"/>
+            <polyline points="25,104 95,110 165,116 235,112 295,114" fill="none" stroke="#c0392b" stroke-width="3" stroke-linejoin="round"/>
+            <line x1="25" y1="128" x2="295" y2="128" stroke="#9a9894" stroke-width="1" stroke-dasharray="4,5"/>
+            <line x1="18" y1="160" x2="302" y2="160" stroke="#c8c5be" stroke-width="1"/>
+          </svg>
+          <span class="cat">Macro</span>
+        </div>
+        <h2>March: <em>the Fed was making a decision with an incomplete picture</em></h2>
+      </a>
+      <p class="stamp">March 2026 &middot; 6 min read</p>
+    </article>
+
+  </div>
+  <p class="empty" id="empty" hidden>Nothing in that topic yet.</p>
+</div>
+
+<!-- ABOUT
+     These are your own words, transcribed from your screen recording.
+     Nothing here was written by me. Edit or delete freely. -->
+<section class="about" id="about">
+  <div class="about-inner" id="mission">
+    <h2>Economics shouldn't require a <em>college degree</em> to understand.</h2>
+    <p>The Margin is written by Tobias Velez, a student at Walter Johnson High School in Bethesda, MD. Every article starts from zero: real data, plain English, and an honest opinion at the end.</p>
+  </div>
+</section>
+
+<div class="sub-wrap" id="newsletter">
+  <div class="sub">
+    <p class="eyebrow">Stay in the loop</p>
+    <h2>New essays, straight to your inbox.</h2>
+    <p class="fine">No spam. One article when it's ready. Unsubscribe anytime.</p>
+    <!--
+      TO MAKE SUBSCRIBING WORK: paste a Buttondown or Substack embed form here.
+      Both are free and give you a real subscriber count. Until then the link
+      below just opens the reader's mail app, which is honest but collects nothing.
+    -->
+    <p><a href="mailto:hello@example.com?subject=Subscribe%20to%20The%20Margin" class="pill-btn">Subscribe by email</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="fi">
+    <a href="index.html" class="fl">The Margin</a>
+    <div class="fli">
+      <a href="#articles">Articles</a>
+      <a href="#about">About</a>
+      <a href="#newsletter">Subscribe</a>
+    </div>
+    <div>&copy; 2026 Tobias Velez &middot; Walter Johnson High School</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('#filters .chip');
+  var cards = document.querySelectorAll('#cards .card');
+  var empty = document.getElementById('empty');
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var cat = chip.dataset.cat, shown = 0;
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      cards.forEach(function (card) {
+        var match = (cat === 'all') || (card.dataset.cat === cat);
+        card.hidden = !match;
+        if (match) shown++;
+      });
+      empty.hidden = shown > 0;
+    });
+  });
+})();
+</script>
+
+</body></html>
