@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I source and check this | The Margin</title>
+<meta name="description" content="Sourcing rules, correction policy, and a running log of claims removed or corrected in The Margin.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#141414;--body:#3d3d3d;--muted:#8a8a85;--line:#e6e4df;--line-soft:#f0eeea;
+  --accent:#b3352a;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+body{font-family:var(--font);background:#fdfcfa;color:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+header{border-bottom:1px solid var(--line)}
+.hi{max-width:720px;margin:0 auto;padding:1.4rem 1.5rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.logo{font-size:1.22rem;font-weight:650;letter-spacing:-0.022em;color:var(--ink)}
+.logo span{color:var(--accent)}
+.hi nav a{font-size:0.86rem;color:var(--muted);margin-left:1.4rem}
+.hi nav a:hover{color:var(--ink)}
+.wrap{max-width:680px;margin:0 auto;padding:3rem 1.5rem 5rem}
+.back{font-size:0.88rem;color:var(--muted);display:inline-block;margin-bottom:2.5rem}
+.back:hover{color:var(--accent)}
+h1{font-size:1.8rem;font-weight:650;line-height:1.25;letter-spacing:-0.022em;color:var(--ink);margin-bottom:1.5rem}
+h2{font-size:1.12rem;font-weight:600;letter-spacing:-0.012em;color:var(--ink);margin:2.75rem 0 0.9rem}
+p{margin-bottom:1.25rem;line-height:1.75}
+ul{margin:0 0 1.25rem 1.15rem}
+li{margin-bottom:0.6rem;line-height:1.7}
+.lede{font-size:1.08rem;color:var(--ink);line-height:1.7;padding-bottom:1.75rem;border-bottom:1px solid var(--line)}
+.log{border:1px solid var(--line);border-radius:3px;margin-top:1.25rem}
+.entry{padding:1.15rem 1.25rem;border-bottom:1px solid var(--line-soft)}
+.entry:last-child{border-bottom:none}
+.entry .where{font-size:0.72rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
+.entry p{font-size:0.95rem;margin-bottom:0;line-height:1.65}
+.tag{display:inline-block;font-size:0.7rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;padding:0.15rem 0.45rem;border-radius:2px;background:#f0eeea;color:var(--muted);margin-left:0.4rem;vertical-align:1px}
+footer{border-top:1px solid var(--line);margin-top:4rem}
+.fi{max-width:720px;margin:0 auto;padding:1.8rem 1.5rem 2.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;font-size:0.82rem;color:var(--muted)}
+a.inline{color:var(--accent);border-bottom:1px solid rgba(179,53,42,0.28)}
+a.inline:hover{border-bottom-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header><div class="hi">
+<a href="index.html" class="logo">The <span>Margin</span></a>
+<nav><a href="index.html">Articles</a><a href="index.html#about">About</a></nav>
+</div></header>
+
+<div class="wrap">
+<a href="index.html" class="back">&larr; All articles</a>
+
+<h1>How I source and check this</h1>
+
+<p class="lede">I'm a high school student, not a newsroom. That means the sourcing rules
+have to be stricter, not looser, because nobody is checking my work before it goes up.
+This page says what those rules are and lists what I have gotten wrong.</p>
+
+<h2>Where figures come from</h2>
+<p>Every number comes from a primary source where one exists. In practice that means
+the Bureau of Labor Statistics, the Federal Reserve, the Energy Information
+Administration, the Census Bureau, Montgomery Planning, and MCPS publications
+including the capital improvements program.</p>
+<p>Each article ends with a data line naming its sources. Where a figure is contested
+between sources, I name the specific series I used, because two credible sources can
+report different numbers for the same month and quietly picking one is how errors
+survive.</p>
+
+<h2>When the calculation is mine</h2>
+<p>Some findings here are not published anywhere. The school-by-school MCPS capacity
+breakdown is arithmetic I did myself from Appendix E of the capital improvements
+program: enrollment minus listed capacity, per school, summed separately for schools
+over and under.</p>
+<p>Where that happens, the article says so explicitly and describes the method, and the
+underlying data is <a class="inline" href="https://github.com/YOUR-USERNAME/mcps-capacity-data">published
+as an open dataset</a> so anyone can reproduce or contradict it. An original calculation
+that nobody can check is not evidence.</p>
+
+<h2>What I do when I cannot verify something</h2>
+<p>I remove it, and I say that I removed it.</p>
+<p>An unverifiable claim that supports my argument is more dangerous than one that
+undercuts it, because I am less likely to look hard at it. Leaving a shaky number in
+because it makes the piece stronger is the failure mode I am most trying to avoid.</p>
+
+<h2>Corrections</h2>
+<p>If something here is wrong, <a class="inline" href="index.html#about">email me</a>.
+I will fix the article and add the change to the log below rather than editing quietly.
+I would rather be corrected than be wrong, and a visible correction log is the only
+thing that makes that claim mean anything.</p>
+
+<h2>Log</h2>
+
+<div class="log">
+
+  <div class="entry">
+    <div class="where">Montgomery County <span class="tag">Removed</span></div>
+    <p>A draft cited an 18% teacher vacancy rate at Walter Johnson. I could not find
+    credible evidence for it and removed the claim. The affordability point it was
+    meant to support is now carried by the starting MCPS salary and the county median
+    rent, both of which are sourced.</p>
+  </div>
+
+  <div class="entry">
+    <div class="where">Montgomery County <span class="tag">Removed</span></div>
+    <p>A draft stated that the county's Gini coefficient rose from 0.42 to 0.46. I could
+    not confirm a consistent primary source and time period for those figures, so the
+    claim was cut. A note explaining the removal appears at the end of the article.</p>
+  </div>
+
+  <div class="entry">
+    <div class="where">March <span class="tag">Corrected</span></div>
+    <p>An earlier version used Brent crude at roughly $94 per barrel on March 9. That
+    understated conditions at the March 17&ndash;18 FOMC meeting. Corrected to $108 on
+    March 17 and $118 on March 18, from the EIA daily Europe Brent Spot Price FOB series.</p>
+  </div>
+
+  <div class="entry">
+    <div class="where">April <span class="tag">Clarified</span></div>
+    <p>Two different EIA shut-in figures for April appeared in successive drafts without
+    explanation. They are not contradictory: 9.1 million barrels per day was the forecast
+    in the April outlook, and 10.5 million was the later estimate once April had ended.
+    The article now distinguishes the two.</p>
+  </div>
+
+  <div class="entry">
+    <div class="where">June <span class="tag">Corrected</span></div>
+    <p>An earlier version gave the average credit-card rate as "around 21%." That figure
+    covers all accounts. Because the passage discusses someone carrying a balance, it now
+    uses 22.15%, the rate on accounts actually assessed interest, from the Federal
+    Reserve's July 8 consumer credit release.</p>
+  </div>
+
+  <div class="entry">
+    <div class="where">June <span class="tag">Clarified</span></div>
+    <p>"Restaurant meals" replaced with "eating out" to match the BLS category actually
+    cited, food away from home.</p>
+  </div>
+
+  <!--
+    ADD NEW ENTRIES AT THE TOP OF THIS LIST as they happen. Copy an <div class="entry">
+    block. Tags used so far: Removed, Corrected, Clarified. Add a date once you start
+    logging corrections made after publication.
+  -->
+
+</div>
+
+</div>
+
+<footer><div class="fi">
+  <span>The Margin</span>
+  <span>&copy; 2026 Tobias Velez</span>
+</div></footer>
+
+</body></html>
