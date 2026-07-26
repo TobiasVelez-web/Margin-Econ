@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Margin</title>
+<meta name="description" content="Economics writing by Tobias Velez, a student at Walter Johnson High School in Bethesda, Maryland. National economics explained through local data.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#141414;--body:#3d3d3d;--muted:#8a8a85;--line:#e6e4df;--line-soft:#f0eeea;--accent:#b3352a;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:#fdfcfa;color:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+header{border-bottom:1px solid var(--line)}
+.hi{max-width:720px;margin:0 auto;padding:1.4rem 1.5rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.logo{font-size:1.22rem;font-weight:650;letter-spacing:-0.022em;color:var(--ink)}
+.logo span{color:var(--accent)}
+.hi nav a{font-size:0.86rem;color:var(--muted);margin-left:1.4rem}
+.hi nav a:hover{color:var(--ink)}
+.wrap{max-width:680px;margin:0 auto;padding:3rem 1.5rem 5rem}
+.back{font-size:0.88rem;color:var(--muted);display:inline-block;margin-bottom:2.5rem}
+.back:hover{color:var(--accent)}
+.kicker{font-size:0.72rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--accent);margin-bottom:0.7rem}
+h1{font-size:1.85rem;font-weight:650;line-height:1.25;letter-spacing:-0.022em;color:var(--ink);margin-bottom:0.9rem}
+.meta{font-size:0.9rem;color:var(--muted);margin-bottom:2.5rem;padding-bottom:1.75rem;border-bottom:1px solid var(--line)}
+.snapshot{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:2.5rem}
+.snap{background:#fdfcfa;padding:1rem 1.15rem}
+.snap .n{font-size:1.35rem;font-weight:650;letter-spacing:-0.02em;color:var(--ink)}
+.snap .l{font-size:0.75rem;color:var(--muted);margin-top:0.2rem;line-height:1.4}
+.body p{margin-bottom:1.4rem;font-size:1.0625rem;line-height:1.78}
+.body h2{font-size:1.2rem;font-weight:600;margin:2.5rem 0 1rem;letter-spacing:-0.012em;color:var(--ink)}
+.body .formula{background:#faf9f7;border-left:3px solid var(--line);padding:0.9rem 1.15rem;margin:0 0 1.4rem;font-size:1.0625rem}
+.tail{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:0.9rem;color:var(--muted);line-height:1.6}
+footer{border-top:1px solid var(--line);margin-top:4rem}
+.fi{max-width:680px;margin:0 auto;padding:1.8rem 1.5rem 2.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;font-size:0.82rem;color:var(--muted)}
+@media(max-width:560px){.snapshot{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.filters{display:flex;flex-wrap:wrap;gap:0.4rem;padding:2.25rem 0 1.75rem}
+.chip{font-family:var(--font);font-size:0.82rem;font-weight:500;padding:0.36rem 0.8rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .15s;line-height:1.4}
+.chip:hover{border-color:#c9c6c0;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fdfcfa;border-color:var(--ink)}
+ul.list{list-style:none;border-top:1px solid var(--line)}
+.item{border-bottom:1px solid var(--line-soft)}
+.item:last-child{border-bottom:none}
+.item > a{display:grid;grid-template-columns:118px 1fr;gap:1.5rem;padding:1.6rem 0;align-items:start}
+.stamp{font-size:0.78rem;color:var(--muted);line-height:1.5;padding-top:0.22rem;font-variant-numeric:tabular-nums}
+.stamp .cat{display:block;color:var(--accent);font-weight:550;letter-spacing:0.035em;text-transform:uppercase;font-size:0.68rem;margin-bottom:0.28rem}
+.ttl{font-size:1.14rem;font-weight:600;line-height:1.4;letter-spacing:-0.014em;color:var(--ink);transition:color .15s}
+.item > a:hover .ttl{color:var(--accent)}
+.read{font-size:0.8rem;color:var(--muted);margin-top:0.42rem}
+.empty{color:var(--muted);font-size:0.92rem;padding:2rem 0}
+.about{border-top:1px solid var(--line);margin-top:3.5rem;padding:2.5rem 0 1rem}
+.about h2{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.11em;color:var(--muted);margin-bottom:1.1rem}
+.about p{font-size:0.97rem;line-height:1.72;margin-bottom:0.95rem;max-width:60ch}
+.about a{color:var(--accent);border-bottom:1px solid rgba(179,53,42,0.28)}
+@media(max-width:560px){.item > a{grid-template-columns:1fr;gap:0.5rem;padding:1.4rem 0}.stamp{padding-top:0;display:flex;align-items:baseline;gap:0.55rem}.stamp .cat{margin-bottom:0}.ttl{font-size:1.08rem}}
+</style>
+</head>
+<body>
+<header><div class="hi">
+<a href="index.html" class="logo">The <span>Margin</span></a>
+<nav><a href="methodology.html">Method</a><a href="#about">About</a></nav>
+</div></header>
+<div class="wrap" style="padding-top:0">
+  <!-- No intro paragraph by design. If you ever add one, record yourself
+       saying why you started this, then type what you actually said.
+       Your own words from the original site, if you want them:
+       "I kept reading economic news that assumed I already knew everything,
+        or that I wouldn't care. Both felt wrong." -->
+  <div class="filters" id="filters" role="group" aria-label="Filter by topic">
+    <button class="chip" data-cat="all" aria-pressed="true">All</button>
+    <button class="chip" data-cat="macro" aria-pressed="false">The Fed &amp; inflation</button>
+    <button class="chip" data-cat="housing" aria-pressed="false">Housing</button>
+    <button class="chip" data-cat="education" aria-pressed="false">Schools</button>
+    <button class="chip" data-cat="inequality" aria-pressed="false">Inequality</button>
+    <button class="chip" data-cat="labor" aria-pressed="false">Jobs</button>
+    <button class="chip" data-cat="consumer" aria-pressed="false">Everyday costs</button>
+  </div>
+  <ul class="list" id="list">
+    <li class="item" data-cat="education">
+      <a href="mcps-capacity.html">
+        <div class="stamp"><span class="cat">Schools</span>July 2026</div>
+        <div><div class="ttl">MCPS is full and empty at the same time</div><div class="read">8 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="education">
+      <a href="mcps-ap-participation.html">
+        <div class="stamp"><span class="cat">Schools</span>July 2026</div>
+        <div><div class="ttl">MCPS offers AP classes almost everywhere. So why does participation range from 20% to 78%?</div><div class="read">7 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="housing">
+      <a href="bethesda-housing.html">
+        <div class="stamp"><span class="cat">Housing</span>July 2026</div>
+        <div><div class="ttl">Bethesda housing: the market rewards the people who got in earlier</div><div class="read">8 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="inequality">
+      <a href="montgomery-county-middle.html">
+        <div class="stamp"><span class="cat">Inequality</span>July 2026</div>
+        <div><div class="ttl">Montgomery County is losing its middle, but the numbers are more complicated than they look</div><div class="read">8 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="labor">
+      <a href="summer-job-effective-wage.html">
+        <div class="stamp"><span class="cat">Labor</span>July 2026</div>
+        <div><div class="ttl">That $18-an-hour job can pay less for each hour you give up</div><div class="read">6 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="consumer">
+      <a href="package-size-food-waste.html">
+        <div class="stamp"><span class="cat">Consumer</span>July 2026</div>
+        <div><div class="ttl">The bigger package is cheaper until you throw part of it away</div><div class="read">6 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="macro">
+      <a href="december-macro-report.html">
+        <div class="stamp"><span class="cat">The Fed</span>July 2026</div>
+        <div><div class="ttl">December 2025 data review: inflation was still high and hiring was weak</div><div class="read">7 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="macro">
+      <a href="february-macro-report.html">
+        <div class="stamp"><span class="cat">The Fed</span>July 2026</div>
+        <div><div class="ttl">February 2026 data review: inflation improved, but the economy still looked uneasy</div><div class="read">7 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="macro">
+      <a href="march-fed-incomplete-picture.html">
+        <div class="stamp"><span class="cat">The Fed</span>July 2026</div>
+        <div><div class="ttl">March: the Fed was making a decision with an incomplete picture</div><div class="read">6 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="macro">
+      <a href="april-oil-steel.html">
+        <div class="stamp"><span class="cat">The Fed</span>July 2026</div>
+        <div><div class="ttl">April: the Fed cannot produce more oil or steel</div><div class="read">7 min read</div></div>
+      </a>
+    </li>
+    <li class="item" data-cat="macro">
+      <a href="june-inflation-report.html">
+        <div class="stamp"><span class="cat">The Fed</span>July 2026</div>
+        <div><div class="ttl">June: one good inflation report did not erase the rest of the year</div><div class="read">6 min read</div></div>
+      </a>
+    </li>
+  </ul>
+  <p class="empty" id="empty" hidden>Nothing in that topic yet.</p>
+  <div class="about" id="about">
+    <h2>About</h2>
+    <p>The Margin is written by Tobias Velez, a student at Walter Johnson High School in Bethesda, Maryland. It covers national economics through its local consequences, plus original analysis of Montgomery County data.</p>
+    <p>Figures come from primary sources where one exists: the Bureau of Labor Statistics, the Federal Reserve, the Energy Information Administration, the Census Bureau, Montgomery Planning and MCPS. Each article ends with its sources, and where a calculation is mine rather than an agency’s, the article says so and describes the method. Full <a href="methodology.html">sourcing rules and correction log</a>.</p>
+    <!-- Put your email in the link below so readers and reporters can reach you. -->
+    <p>Corrections welcome: <a href="mailto:YOUR-EMAIL-HERE">email me</a> and I’ll fix it and note the change.</p>
+  </div>
+</div>
+<footer><div class="fi"><span>The Margin</span><span>&copy; 2026 Tobias Velez</span></div></footer>
+<script>
+(function(){
+  var chips=document.querySelectorAll('#filters .chip'),items=document.querySelectorAll('#list .item'),empty=document.getElementById('empty');
+  chips.forEach(function(chip){chip.addEventListener('click',function(){
+    var cat=chip.dataset.cat,shown=0;
+    chips.forEach(function(c){c.setAttribute('aria-pressed',c===chip?'true':'false');});
+    items.forEach(function(li){var m=(cat==='all')||(li.dataset.cat===cat);li.hidden=!m;if(m)shown++;});
+    empty.hidden=shown>0;
+  });});
+})();
+</script>
+</body></html>
